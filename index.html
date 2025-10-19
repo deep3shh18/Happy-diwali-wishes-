@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>दिवाली की शुभकामनाएँ</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&display=swap');
+
+        body {
+            font-family: 'Tiro Devanagari Hindi', serif;
+            margin: 0;
+            padding: 20px 0; /* ऊपर-नीचे थोड़ी जगह ताकि विज्ञापन चिपके नहीं */
+            background: #3c0d0d;
+            overflow-x: hidden; /* सिर्फ हॉरिजॉन्टल ओवरफ्लो रोकें */
+            display: flex;
+            flex-direction: column; /* कंटेंट और विज्ञापन को ऊपर-नीचे रखने के लिए */
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 550px;
+            width: 95%;
+            margin: 20px;
+            background: linear-gradient(145deg, #fff8e1, #ffecb3);
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2), 0 0 15px rgba(255, 215, 0, 0.5) inset;
+            text-align: center;
+            border: 5px solid #d4af37;
+            position: relative;
+            z-index: 10;
+        }
+
+        h1 {
+            color: #c0392b;
+            font-size: 2.8em;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            margin-bottom: 10px;
+            animation: fadeInDown 1.5s ease-out;
+        }
+
+        #wishesMessage {
+            font-size: 1.8em;
+            color: #2c3e50;
+            font-weight: bold;
+            margin-bottom: 20px;
+            animation: zoomIn 1s ease-out;
+            min-height: 50px;
+        }
+
+        #wishesMessage span {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        img.diwali-gif {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border: 3px solid #d4af37;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #34495e;
+        }
+
+        .input-group {
+            margin-top: 25px;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 24px);
+            padding: 12px;
+            border-radius: 8px;
+            border: 2px solid #f39c12;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            font-family: 'Tiro Devanagari Hindi', serif;
+        }
+
+        .whatsapp-button {
+            background: linear-gradient(45deg, #25D366, #128C7E);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2em;
+            font-family: 'Tiro Devanagari Hindi', serif;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .whatsapp-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+        
+        .whatsapp-button svg {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+
+        #generatedLinkContainer {
+            margin-top: 25px;
+            display: none;
+            animation: fadeInUp 0.5s;
+        }
+
+        #generatedLink {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+            background-color: #fdfaf0;
+            text-align: center;
+        }
+        
+        /* विज्ञापन कंटेनर के लिए स्टाइल */
+        .ad-container {
+            margin-top: 25px; /* शुभकामना बॉक्स से दूरी */
+            z-index: 10;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes zoomIn { from { opacity: 0; transform: scale(0.5); } to { opacity: 1; transform: scale(1); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Firework Effect */
+        .firework {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            animation: launch 1s ease-out forwards;
+            z-index: 1; /* यह सुनिश्चित करता है कि पटाखे मुख्य सामग्री के पीछे रहें */
+        }
+
+        .firework::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            animation: explode 0.5s 1s forwards;
+            opacity: 0;
+        }
+
+        @keyframes launch {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-250px); opacity: 0; }
+        }
+
+        @keyframes explode {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(35); opacity: 0; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div id="wishesMessage"></div>
+        <h1 id="mainHeading">शुभ दीपावली</h1>
+        <img src="laxmi.gif" alt="Happy Diwali" class="diwali-gif">
+        <p>यहाँ अपना नाम लिखें और शुभकामनाएँ भेजें।</p>
+        <div class="input-group">
+            <input type="text" id="nameInput" placeholder="अपना नाम यहाँ लिखें...">
+            <button class="whatsapp-button" onclick="generateAndShareLink()">
+                <svg viewBox="0 0 32 32" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.044-.53-.044-.316 0-.5-.015-.716.044s-.99.487-1.518 1.39c-.53.903-.93 1.763-.93 2.775 0 1.012.93 2.358 1.03 2.573.1.215 1.758 2.986 4.487 4.142 2.73 1.156 3.688 1.128 4.357.945.67-.182 2.16-1.043 2.488-1.963.328-.92.328-1.763.21-1.963-.114-.198-.31-.31-.6-.31zM16 4C9.37 4 4 9.37 4 16c0 6.63 5.37 12 12 12s12-5.37 12-12c0-6.63-5.37-12-12-12zm0 21c-4.97 0-9-4.03-9-9s4.03-9 9-9 9 4.03 9 9-4.03 9-9 9z"></path></svg>
+                WhatsApp पर शेयर करें
+            </button>
+        </div>
+        <div id="generatedLinkContainer">
+            <p>शेयर करने के लिए इस लिंक को कॉपी करें:</p>
+            <input type="text" id="generatedLink" readonly onclick="this.select()">
+        </div>
+    </div>
+
+    <!-- ===== विज्ञापन कोड यहाँ से शुरू होता है ===== -->
+    <div class="ad-container">
+        <script type="text/javascript">
+            atOptions = {
+                'key' : '69eba54dc3961dae5b133cb6131d9941',
+                'format' : 'iframe',
+                'height' : 50,
+                'width' : 320,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/69eba54dc3961dae5b133cb6131d9941/invoke.js"></script>
+    </div>
+    <!-- ===== विज्ञापन कोड यहाँ खत्म होता है ===== -->
+
+
+    <script>
+        window.onload = function() {
+            const params = new URLSearchParams(window.location.search);
+            const senderName = params.get('from');
+            if (senderName) {
+                const decodedName = decodeURIComponent(senderName.replace(/\+/g, ' '));
+                document.getElementById('mainHeading').innerHTML = "Happy Diwali";
+                document.getElementById('wishesMessage').innerHTML = `<span>${decodedName}</span> की तरफ से`;
+            }
+            createFireworks();
+        };
+
+        async function generateAndShareLink() {
+            const name = document.getElementById('nameInput').value;
+            if (name.trim() === "") {
+                alert("कृपया अपना नाम ज़रूर लिखें!");
+                return;
+            }
+            const baseUrl = window.location.href.split('?')[0];
+            const generatedUrl = `${baseUrl}?from=${encodeURIComponent(name)}`;
+
+            if (navigator.share) {
+                try {
+                    await navigator.share({
+                        title: 'दिवाली की शुभकामनाएँ!',
+                        text: `${name} ने आपको दिवाली की शुभकामनाएँ भेजी हैं!`,
+                        url: generatedUrl,
+                    });
+                } catch (error) {
+                    console.error('Share failed:', error);
+                }
+            } else {
+                const linkContainer = document.getElementById('generatedLinkContainer');
+                const linkInput = document.getElementById('generatedLink');
+                linkInput.value = generatedUrl;
+                linkContainer.style.display = 'block';
+                linkInput.select();
+                linkInput.setSelectionRange(0, 99999);
+                alert("आपका लिंक तैयार है! इसे कॉपी करके शेयर करें।");
+            }
+        }
+        
+        function createFireworks() {
+            const fireworkContainer = document.body;
+            setInterval(() => {
+                const firework = document.createElement('div');
+                firework.className = 'firework';
+                firework.style.left = Math.random() * 100 + 'vw';
+                firework.style.top = Math.random() * 100 + 'vh'; // पूरे पेज पर पटाखे
+                const colors = ['#FFD700', '#FF4500', '#ADFF2F', '#00FFFF', '#FF00FF', '#FFFFFF'];
+                firework.style.background = colors[Math.floor(Math.random() * colors.length)];
+                firework.style.boxShadow = `0 0 5px ${firework.style.background}, 0 0 10px ${firework.style.background}`;
+                
+                fireworkContainer.appendChild(firework);
+                setTimeout(() => {
+                    firework.remove();
+                }, 1800);
+            }, 170);
+        }
+    </script>
+
+</body>
+</html>
+<script type="text/javascript">
+	atOptions = {
+		'key' : '69eba54dc3961dae5b133cb6131d9941',
+		'format' : 'iframe',
+		'height' : 50,
+		'width' : 320,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/69eba54dc3961dae5b133cb6131d9941/invoke.js"></script>
